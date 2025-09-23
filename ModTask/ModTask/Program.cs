@@ -383,7 +383,11 @@ namespace ModTask
             
            
             Logo();
-            Parser.Default.ParseArguments<ArgOpts>(args).WithParsed(options =>
+            var parser = new Parser(settings =>
+            {
+                settings.HelpWriter = Console.Out;
+            });
+            parser.ParseArguments<ArgOpts>(args).WithParsed(options =>
             {
                 
                 
@@ -528,3 +532,4 @@ namespace ModTask
         }
     }
 }
+
